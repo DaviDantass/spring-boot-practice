@@ -2,7 +2,6 @@ package dev.davi.coursespring.config;
 
 import dev.davi.coursespring.entities.User;
 import dev.davi.coursespring.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -19,6 +18,10 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2));
     }
-    @Autowired
+
     private UserRepository userRepository;
+
+    public TestConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 }
