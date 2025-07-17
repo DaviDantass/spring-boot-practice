@@ -10,21 +10,21 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-    private final UserService service;
+    private final UserService userService;
 
-    public UserResource(UserService service) {
-        this.service = service;
+    public UserResource(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
-        List<User> list = service.findAll();
+        List<User> list = userService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
-        User user = service.findById(id);
+        User user = userService.findById(id);
         return ResponseEntity.ok().body(user);
     }
 }

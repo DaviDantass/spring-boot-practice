@@ -6,7 +6,6 @@ import dev.davi.coursespring.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -21,7 +20,6 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        Optional<User> obj = userRepository.findById(id);
-        return obj.orElseThrow(() -> new UserNotFoundException("User not found with id " + id));
+        return userRepository.findById(id).orElseThrow(()-> new UserNotFoundException("User not found. Id: " + id));
     }
 }
