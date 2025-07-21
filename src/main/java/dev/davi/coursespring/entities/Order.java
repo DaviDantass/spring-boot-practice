@@ -1,9 +1,9 @@
 package dev.davi.coursespring.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import dev.davi.coursespring.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
@@ -23,6 +23,8 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+    private Integer orderStatus;
+
     public User getClient() {
         return client;
     }
@@ -33,10 +35,21 @@ public class Order implements Serializable {
 
     public Order() {
     }
-    public Order(Long id, Instant moment, User client) {
+    public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;
+        setOrderStatus(orderStatus);
         this.client = client;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus == null ? null : OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if(orderStatus != null) {
+            this.orderStatus = orderStatus.getCode();
+        }
     }
 
     @Override
