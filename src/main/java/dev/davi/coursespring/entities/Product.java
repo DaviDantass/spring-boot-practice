@@ -70,15 +70,12 @@ public class Product implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
-
     public String getImagrUrl() {
         return imagrUrl;
     }
-
     public void setImagrUrl(String imagrUrl) {
         this.imagrUrl = imagrUrl;
     }
-
     public Set<Category> getCategories() {
         return categories;
     }

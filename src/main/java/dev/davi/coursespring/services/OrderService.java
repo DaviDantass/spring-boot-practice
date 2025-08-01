@@ -1,8 +1,10 @@
 package dev.davi.coursespring.services;
 
 import dev.davi.coursespring.entities.Order;
+import dev.davi.coursespring.entities.User;
 import dev.davi.coursespring.exceptions.OrderNotFoundException;
 import dev.davi.coursespring.repository.OrderRepository;
+import dev.davi.coursespring.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Service
 public class OrderService {
     private final OrderRepository orderRepository;
+
 
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
@@ -22,5 +25,6 @@ public class OrderService {
     public Order findById(Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException("Order not found. Id: " + id));
     }
+
 
 }
