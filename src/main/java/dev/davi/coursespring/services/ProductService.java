@@ -1,8 +1,8 @@
 package dev.davi.coursespring.services;
 
 import dev.davi.coursespring.entities.Product;
-import dev.davi.coursespring.exceptions.ProductNotFoundException;
 import dev.davi.coursespring.repository.ProductRepository;
+import dev.davi.coursespring.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +21,6 @@ public class ProductService {
 
     public Product findById(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found. Id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }

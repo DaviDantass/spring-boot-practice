@@ -1,8 +1,8 @@
 package dev.davi.coursespring.services;
 
 import dev.davi.coursespring.entities.User;
-import dev.davi.coursespring.exceptions.UserNotFoundException;
 import dev.davi.coursespring.repository.UserRepository;
+import dev.davi.coursespring.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(()-> new UserNotFoundException("User not found. Id: " + id));
+        return userRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException(id));
     }
     public User insert(User obj){
         return userRepository.save(obj);
