@@ -21,6 +21,6 @@ public class CategoryService {
 
     public Category findById(Long id) {
         return categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(id));
+                .orElseThrow(() -> new ResourceNotFoundException("Categoria não encontrada com id " + id));
     }
 }
